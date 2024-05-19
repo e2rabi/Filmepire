@@ -2,12 +2,15 @@ import React from 'react';
 import { CssBaseline } from '@mui/material'
 import { Switch, Route } from 'react-router-dom'
 import { Actors, Movies, MovieInformation, Profile, NavBar } from './'
+import useStyles from './styles'
 function App() {
+  const classes = useStyles();
   return (
-    <div>
+    <div className={classes.root}>
       <CssBaseline />
-      <main>
-        <NavBar />
+      <NavBar />
+      <main className={classes.content}>
+        <div className={classes.toolbar} />
         <Switch>
           <Route exact path="/">
             <Movies />
