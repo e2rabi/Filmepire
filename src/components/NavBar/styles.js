@@ -16,5 +16,6 @@ export default makeStyles((theme) => ({
         [theme.breakpoints.up('sm')]: {
             display: 'none'
         }
-    }
+    },
+    linkButton: {}
 }))
