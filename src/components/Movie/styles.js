@@ -1,4 +1,5 @@
 import { makeStyles } from '@mui/styles';
+import { hover } from '@testing-library/user-event/dist/hover';
 
 export default makeStyles((theme) => ({
     movie: {
@@ -14,6 +15,26 @@ export default makeStyles((theme) => ({
         marginBottom: 0,
         textAlign: 'center'
 
+    },
+    image: {
+        borderRadius: '20px',
+        height: '300px',
+        marginBottom: '10px',
+        '&:hover': {
+            transform: 'scale(1.05)'
+        },
+    },
+    links: {
+        alignItems: 'center',
+        fontWeight: 'bolder',
+        [theme.breakpoints.up('xs')]: {
+            display: 'flex',
+            flexDirection: 'column'
+        },
+        '&:hover': {
+            cursor: 'pointer',
+            textDecoration: 'none'
+        },
     }
 
 }))
