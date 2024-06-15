@@ -12,9 +12,15 @@ const Movie = (movie, i) => {
                     <img alt={movie.movie.title}
                         className={classes.image}
                         src={movie.movie.poster_path ? `https://image.tmdb.org/t/p/w500${movie.movie.poster_path}` : "https://www.fillmurry.com/200/300"} />
+                    <Typography className={classes.title} variant="h5">{movie.movie.title}</Typography>
+                    <Tooltip disableTouchListener title={`${movie.movie.vote_average}/10`} >
+                        <div>
+                            <Rating readOnly value={movie.movie.vote_average / 2} precision={0.1} />
+                        </div>
+                    </Tooltip>
                 </Link>
             </Grow>
-            <Typography className={classes.title} variant="h5">{movie.movie.title}</Typography>
+
         </Grid>
     )
 }
