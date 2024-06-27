@@ -5,6 +5,8 @@ import { useTheme } from '@mui/styles';
 import useStyles from './styles';
 import { useGetGenresQuery } from '../../services/TMDB';
 import genreIcons from '../../assets/genres';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectGenreOrCategory } from '../../features/currentGenreOrCategory';
 
 const redLogo = 'https://fontmeme.com/permalink/210930/8531c658a743debe1e1aa1a2fc82006e.png';
 const blueLogo = 'https://fontmeme.com/permalink/210930/6854ae5c7f76597cf8680e48a2c8a50a.png';
@@ -19,6 +21,7 @@ const SideBar = ({ setMobileOpen }) => {
     const theme = useTheme();
     const classes = useStyles();
     const { data, error, isFetching } = useGetGenresQuery();
+    const dispatch = useDispatch();
 
     return (
         <>
@@ -37,9 +40,9 @@ const SideBar = ({ setMobileOpen }) => {
                         <CircularProgress size="4rem" />
                     </Box>
                 )
-                    : categories.map(({ label, id }) => (
+                    : categories.map(({ label, value }) => (
                         <Link key={label} className={classes.links} to="/" >
-                            <ListItem onClick={() => { }} button>
+                            <ListItem onClick={() => dispatch(selectGenreOrCategory(value))}>
                                 <ListItemIcon>
                                     <img src={genreIcons[label.toLowerCase()]} className={classes.genreImages} height={30} />
                                 </ListItemIcon>
